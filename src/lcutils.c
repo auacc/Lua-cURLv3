@@ -355,7 +355,7 @@ void lcurl_stack_dump (lua_State *L){
 
 curl_socket_t lcurl_opt_os_socket(lua_State *L, int idx, curl_socket_t def) {
   if (lua_islightuserdata(L, idx))
-    return (curl_socket_t)lua_touserdata(L, idx);
+    return (curl_socket_t)(intptr_t)lua_touserdata(L, idx);
 
   return (curl_socket_t)lutil_optint64(L, idx, def);
 }
