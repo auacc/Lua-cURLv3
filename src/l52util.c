@@ -49,19 +49,6 @@ void luaL_setfuncs (lua_State *L, const luaL_Reg *l, int nup){
 
 #endif
 
-void lua_rawgetp(lua_State *L, int index, const void *p){
-  index = lua_absindex(L, index);
-  lua_pushlightuserdata(L, (void *)p);
-  lua_rawget(L, index);
-}
-
-void lua_rawsetp (lua_State *L, int index, const void *p){
-  index = lua_absindex(L, index);
-  lua_pushlightuserdata(L, (void *)p);
-  lua_insert(L, -2);
-  lua_rawset(L, index);
-}
-
 #endif
 
 int lutil_newmetatablep (lua_State *L, const void *p) {
